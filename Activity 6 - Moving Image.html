@@ -1,0 +1,73 @@
+<style type = "text/css">
+img{
+  width: 200px;
+  height: 180px;
+}
+</style>
+<script language = "javascript">
+
+    function stop_function(){
+        var keys = document.getElementById('Keys').setAttribute("onkeypress", "");
+        keys.removeAttribute("onkeypress");
+    }
+
+    function move_picture(event)
+    {
+      if(event.key == "d" || event.key == "D")
+      {
+        position_left = document.getElementById('box').style.left;
+        position_left = position_left.substring(0, position_left.length-2);
+        position_left = parseInt(position_left)+50;
+        document.getElementById('box').style.left=position_left+"px";
+        document.getElementById('box').innerHTML="<img src = right.png />";
+        if(position_left >= 1100){
+                stop_function();
+            }
+      }
+
+      if(event.key == "a" || event.key == "A")
+      {
+        position_left = document.getElementById('box').style.left;
+        position_left = position_left.substring(0, position_left.length-2);
+        position_left = parseInt(position_left)-50;
+        document.getElementById('box').style.left=position_left+"px";
+        document.getElementById('box').innerHTML="<img src = left.png />";
+        if(position_left <= 0){
+                stop_function();
+            }
+      }
+
+      if(event.key == "w" || event.key == "W")
+      {
+        position_top = document.getElementById('box').style.top;
+        position_top = position_top.substring(0, position_top.length-2);
+        position_top = parseInt(position_top)-50;
+        document.getElementById('box').style.top=position_top+"px";
+        document.getElementById('box').innerHTML="<img src = up.png />";
+        if(position_top <= 0){
+                stop_function();
+            }
+      }
+
+      if(event.key == "x" || event.key == "X")
+      {
+        position_top = document.getElementById('box').style.top;
+        position_top = position_top.substring(0, position_top.length-2);
+        position_top = parseInt(position_top)+50;
+        document.getElementById('box').style.top=position_top+"px";
+        document.getElementById('box').innerHTML="<img src = down.png />";
+        if(position_top >= 450){
+                stop_function();
+            }
+      }
+    }
+</script>
+
+<body id="Keys" onkeypress="move_picture(event)">
+<div id=box style="top: 200px; left: 500px; position: absolute;">
+    <img src = right.png />
+</div>
+
+<div style = "width: 1300px; height: 600px; border: solid;">
+</div>
+</body>
